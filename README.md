@@ -1,12 +1,14 @@
 # Smart Movie Streaming Website
 
 ## Project Overview
+ 
+**Developer:** Syed Mehran Ahmed
 
 A comprehensive MERN-based movie streaming platform that revolutionizes the way users discover and watch movies through advanced search capabilities and seamless user experience.
 
 ## 🚀 Key Achievements
 
-• **Created and deployed** a full-stack movie streaming website using **React, Express, Tailwind CSS and ShadCN UI**, hosted on **Vercel**
+• **Created and deployed** a full-stack movie streaming website using **React, Express, Tailwind CSS and ShadCN UI**, hosted on **Vercel & Render**
 
 • **Enabled semantic and fuzzy search** with **Hugging Face** and **MongoDB Atlas Search**, improving discovery speed and relevance by **40%**
 
@@ -14,7 +16,11 @@ A comprehensive MERN-based movie streaming platform that revolutionizes the way 
 
 • **Engineered a video player** with **Video.js** and enabled rentals via **Razorpay payments**, secured by **JWT/OAuth2-based session handling**
 
-**Live Demo:** [Movie Website](https://movie-website-opensoft.vercel.app/)  
+## 🌐 Live Application
+
+**🔗 Live Demo:** [https://movie-website-five-wine.vercel.app/](https://movie-website-five-wine.vercel.app/)  
+**🔧 Backend API:** [https://movie-website-qphe.onrender.com/](https://movie-website-qphe.onrender.com/)  
+**📂 Repository:** [https://github.com/silentwraith-syed/movie-website](https://github.com/silentwraith-syed/movie-website)  
 
 ## ✨ Features
 
