@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 27 96% 61%;
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 27 96% 61%;
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 27 96% 61%;
+    --radius: 0.5rem;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    
+    --muted: 215 20.2% 65.1%;
+    --muted-foreground: 215 20.2% 65.1%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* .movie-card {
+  @apply relative overflow-hidden rounded-lg transition-transform duration-300 hover:scale-105;
+} */
+
+.movie-card {
+  @apply relative block overflow-hidden rounded-lg transition-all duration-300;
+}
+
+.movie-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent
+         opacity-0 transition-all duration-300;
+}
+
+.movie-card:hover .movie-card-overlay {
+  @apply opacity-100;
+}
+
+
+.movie-card img {
+  @apply w-full h-full object-cover;
+}
+
+/* .movie-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.movie-card:hover .movie-card-overlay {
+  @apply opacity-100;
+} */
+
+.hero-gradient {
+  @apply absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent;
+}
+
+.search-results-gradient {
+  @apply absolute inset-0 bg-gradient-to-b from-background/95 to-background;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

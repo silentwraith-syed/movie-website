@@ -1,0 +1,91 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Search } from "lucide-react";
+import { Button } from "./ui/button";
+import SearchBar from "./SearchBar";
+import { useAuth } from "../context/AuthContext";
+import SignInDialog from "./auth/SignInDialog";
+import UserMenu from "./auth/UserMenu";
+
+export default function Navbar() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { user } = useAuth();
+
+  // Handle navbar background opacity on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 550);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`fixed top-0 w-full z-40 transition-all duration-300 px-4 py-3
+        ${isScrolled
+          ? "bg-gray-900/95 backdrop-blur-md shadow-md"
+          : "bg-gradient-to-b from-gray-900/90 to-transparent"
+        }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <a
+          href="/"
+          className={`text-2xl font-bold transition-colors duration-300
+            ${isScrolled
+              ? "text-white"
+              : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+            }`}
+        >
+          Junglee.Moviez
+        </a>
+
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            {isSearchOpen ? (
+              <SearchBar onClose={() => setIsSearchOpen(false)} />
+            ) : (
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-2xl border transition-all duration-300 max-w-[200px] sm:max-w-[320px] md:w-80
+    ${isScrolled
+                    ? "bg-gray-900 border-gray-600 hover:bg-gray-800"
+                    : "bg-gray-900/20 border-gray-400 hover:bg-gray-900/30"
+                  }`}
+              >
+
+                <Search className="h-5 w-5 text-gray-400" />
+                <span className="text-gray-400 text-sm hidden sm:inline">Search movies...</span>
+              </button>
+            )}
+          </div>
+
+          {user ? (
+            <UserMenu />
+          ) : (
+            <Button
+              variant="secondary"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors duration-300
+                ${isScrolled
+                  ? "bg-white text-gray-900 hover:bg-gray-200"
+                  : "bg-white/90 text-gray-900 hover:bg-white"
+                }`}
+              onClick={() => setIsSignInOpen(true)}
+            >
+              Sign In
+            </Button>
+
+          )}
+        </div>
+      </div>
+
+      <SignInDialog
+        open={isSignInOpen}
+        onOpenChange={setIsSignInOpen}
+      />
+    </nav>
+  );
+}
