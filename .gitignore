@@ -25,6 +25,7 @@ dist-ssr
 
 
 # Ignore environment variables in all locations
+venv
 .env
 backend/.env
 .env.local
